@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html ng-app="myStore">
+  <head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css"> -->
+    <script type="text/javascript" src="ui-bootstrap-tpls-1.3.2.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <!-- // <script type="text/javascript" src="form.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="ui-bootstrap-custom-1.3.2-csp.css">
+    <script type="text/javascript">
+		$(document).ready(function(){
+			$("#myModal").modal('show');
+		});
+	</script>
+  </head>
+
+  <body ng-controller="StoreController as store">
+
+
+	 <!-- Login Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog modal-sm">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <h4 class="modal-title">به سامانه بورس خوش آمدید</h4>
+	        </div>
+	        <div class="modal-body">
+	       	 <form name="loginForm">
+		       	 <input type="text" 
+		           placeholder="شناسه کاربری" 
+	               name="userID" 
+	               class="form-control" 
+	               id="userID" 
+	               ng-model="userID" 
+	               required /> 
+
+	       	 </form>
+	        </div>
+	        <div class="modal-footer">
+
+	          <button type="submit" class="btn btn-default" data-dismiss="modal">ورود</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	  <div class="container">
+	    <!--  Store Header  -->
+	    <div class="row">
+		    <div class="col-sm-12">
+			    <header id="top" class="jumbotron">
+			      <h1 class="text-center">هسته معاملات بورس</h1></br>
+			      <i>نسخه آزمایشی</i>
+			    </header>
+		    </div>
+	    </div>
+
+	    <!--  customers Container  -->
+	    <div class="row row-space">
+	    	<div class="col-sm-4 col-sm-push-8">
+			    <div class="list-group">
+			      <!--  customer Container  -->
+			      <div class="list-group-item" ng-repeat="customer in store.customers">
+			        <div  style="display: none;" >{{customer.id = userID}}</div>
+			        <h4>حساب کاربری &nbsp;&nbsp;<em>{{customer.id}}</em></h4>  
+			        
+			        	
+			        <!-- customer Tabs  -->
+			        <section ng-controller="TabController as tab">
+			          <ul class="nav nav-pills navbar-right">
+			            <li ng-class="{ active:tab.isSet(3) }">
+			              <a href ng-click="tab.setTab(3)">‌درخواست‌ها</a>
+			            </li>
+			            <li ng-class="{ active:tab.isSet(2) }">
+			              <a href ng-click="tab.setTab(2)">سهام‌ها</a>
+			            </li>
+			            <li ng-class="{ active:tab.isSet(1) }">
+			              <a href ng-click="tab.setTab(1)">موجودی</a>
+			            </li>
+			          </ul>
+
+			          <!--  Budget Tab's Content  -->
+			          <div ng-show="tab.isSet(1)"></br></br>
+			            <blockquote><i>{{customer.budget}} هزار ریال</i></blockquote>
+			            <div class="box">
+				            <a ng-click="depositEn=true" ng-hide="depositEn">افزایش اعتبار »</a> 
+				            <div ng-show="depositEn">
+				            	<a ng-click="depositEn=false"><b>. . .</b></a></br></br>
+								<!--  Deposit Form -->
+								<form name="depositForm" ng-controller="DepositController as depositCtrl" ng-submit="depositForm.$valid && depositCtrl.incBudget(customer)" novalidate>
+
+								  <!--  Live Preview -->
+								  <!-- <blockquote >
+								    <strong>{{reviewCtrl.review.stars}} Stars</strong>
+								    {{reviewCtrl.review.body}}
+								    <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
+								  </blockquote> -->
+
+								  <fieldset class="form-group">
+								    <input ng-model="depositCtrl.amount" type="number" min="0" class="form-control" placeholder="مبلغ به هزار ریال"/>
+								  </fieldset>
+								  <fieldset class="form-group">
+								    <input type="submit" value="واریز" />
+								  </fieldset>
+								</form>
+				            </div>
+			            </div>
+			          </div>
+
+
+
+			          <!--  Stock Tab's Content  -->
+			          <div ng-show="tab.isSet(2)"></br></br>
+				          <div class="box">
+				          	<ul>
+					          <li ng-repeat="stock in customer.stocks">
+				                <strong>{{stock.name}}</strong>
+				                &nbsp;:&nbsp; 
+				                <strong>{{stock.quantity}}&nbsp;</strong>سهم
+						      <li>
+				          	</ul>
+				          </div>
+			          </div>
+
+			          <!--  Request Tab's Content  -->
+			          <div ng-show="tab.isSet(3)"></br></br>
+			            <ul>
+			              <li ng-repeat="request in customer.requests">
+			                <blockquote>
+			                  <strong>{{request.bs}}&nbsp;</strong>
+	                  		  <strong>{{request.quantity}}&nbsp;</strong>سهم 
+	                  		  <strong>{{request.symbol}}&nbsp;</strong>به قیمت
+	                  		  <strong>{{request.price}}&nbsp;</strong>از نوع
+	                  		  <strong>{{request.type}}</strong></br>
+	                  		  <i>[{{request.status}}]</i>
+			                  <!-- <cite class="clearfix">—{{review.author}}</cite> -->
+			                </blockquote>
+			              </li>  
+			            </ul>
+
+
+			           
+ 			          </div>
+
+			        </section>
+			      </div>
+
+			    </div>
+		    </div>
+		    <div class="col-sm-4">
+			    <div class="list-group-item">
+			    	<h4>نماد‌ها</h4>
+			    	<div class="box">
+			          	<ul>
+				          <li ng-repeat="symbol in store.symbols">
+			                <!-- <button>{{symbol.name}}</button> -->
+							                <!-- <p>{{symbol.name}}</p> -->
+							<div ng-controller="ModalDemoCtrl">
+							    <script type="text/ng-template" id="myModalContent.html">
+							        <div class="modal-header">
+							            <h3 class="modal-title">ایجاد درخواست </h3>
+							        </div>
+							        <div class="modal-body">
+								        <div class="alert alert-info">
+								        <strong><i>» سهام&nbsp;{{selected.symbol}}</i></strong>
+								        </div>
+								        <form name="reqForm" role="form" novalidate>
+
+								          <label for="quantity" class="control-label">تعداد</label>
+					                      <input type="number" min="0"
+								           placeholder="تعداد به رقم" 
+					                       name="quantity" 
+					                       class="form-control" 
+					                       id="quantity" 
+					                       ng-model="selected.quantity" 
+					                       required /> 
+					                       <div ng-messages="reqForm.quantity.$error" ng-if="reqForm.quantity.$touched">
+							                  <div ng-message="required" class="error-msg">لطفا تعداد را وارد کنید.</div>
+							                </div> </br>
+
+								          <label for="price" class="control-label">قیمت</label>
+								          <input type="number" min="0"
+					                       name="price" 
+					                       class="form-control" 
+					                       id="price" 
+					                       ng-model="selected.price" 
+								           placeholder="قیمت به ریال" 
+					                       required /> 
+					                       <div ng-messages="reqForm.price.$error" ng-if="reqForm.price.$touched">
+							                  <div ng-message="required" class="error-msg">لطفا قیمت را وارد کنید.</div>
+							                </div> </br>
+					                       <div ng-controller="ButtonsCtrl">
+											    <div class="btn-group">
+											        <label class="btn btn-primary" ng-model="selected.bs" uib-btn-radio="'sell'">فروش</label>
+											        <label class="btn btn-primary" ng-model="selected.bs" uib-btn-radio="'buy'">خرید</label>
+											    </div></br></br>
+											    <div class="btn-group">
+											        <label class="btn btn-primary" ng-model="selected.type" uib-btn-radio="'IOC'">IOC</label>
+											        <label class="btn btn-primary" ng-model="selected.type" uib-btn-radio="'MPO'">MPO</label>
+											        <label class="btn btn-primary" ng-model="selected.type" uib-btn-radio="'GTC'">GTC</label>
+											    </div></br>
+											     <cite class="clearfix" >
+											     	<blockquote ><i><font size="3">{{selected.bs === 'buy' ? 'خرید' : 'فروش'}}&nbsp;{{selected.quantity}}&nbsp;سهام&nbsp;{{selected.symbol}}&nbsp;به قیمت&nbsp;{{selected.price}}&nbsp;ریال از نوع
+											     		{{selected.type}}</font>
+											     	</i></blockquote>
+											     </cite>
+											</div>
+										</form>
+							        </div>
+							        <div class="modal-footer">
+							            <button class="btn btn-success" type="button" ng-click="ok(reqForm)">ثبت</button>
+							            <button class="btn btn-danger" type="button" ng-click="cancel()">لغو</button>
+							        </div>
+							    </script>
+
+							    <button type="button" class="btn btn-default" ng-click="open('sm',symbol.name) ">{{symbol.name}}</button></br></br>
+							    
+							    <!-- <div ng-show="selected">Selection from a modal: {{selected.symbol}}</div> -->
+							</div>
+
+			           
+					      <li>
+			          	</ul>
+				    </div>
+			    </div>
+		    </div>
+		    <div class="col-sm-4 col-sm-pull-8">
+		    <div class="list-group-item">
+			    	<h4>وضعیت بازار</h4>
+
+
+		
+		    </div>
+	    </div>
+	  </div>
+	  <script type="text/javascript" src="angular-messages.min.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,59 @@
+/*C30*/SET SCHEMA PUBLIC
+drop table cust_roles if exists
+drop table symbols if exists
+drop table requests if exists
+drop table has_share if exists
+drop table transactions if exists
+drop table customers if exists
+drop table customer if exists
+drop table roles if exists
+create table customers (\u000a    code integer not null,\u000a    id integer not null,\u000a    pass varchar(100) not null,\u000a    cash integer not null,\u000a    name varchar(100) not null,\u000a    family varchar(100) not null,\u000a    email varchar(100) not null,\u000a    primary key (id)\u000a)
+create table symbols (\u000a    name varchar(100) not null,\u000a    primary key (name)\u000a)
+create table has_share (\u000a    id integer not null,\u000a    name varchar(100) not null,\u000a    share_count integer default 0,\u000a    primary key (id, name),\u000a)
+create table requests (\u000a    id integer not null,\u000a    name varchar(100) not null,\u000a    req_id integer not null,\u000a    status varchar(100) not null,\u000a    req_value integer default 0,\u000a    req_count integer default 0,\u000a    req_time timestamp,\u000a    req_type varchar(100) not null,\u000a    req_pro varchar(100) not null,\u000a    cust_id integer not null,\u000a\u000a    primary key (req_id),\u000a)
+create table transactions (\u000a    req_id1 integer not null,\u000a    req_id2 integer not null,\u000a    trans_time timestamp not null,\u000a\u000a    primary key (req_id1, req_id2),\u000a)
+create table cust_roles (\u000a    id integer not null,\u000a    user_role varchar(100) not null,\u000a    primary key (id, user_role),\u000a    constraint custs_id_fk foreign key(id) references customers(id)\u000a)
+create table roles (\u000a   user_role varchar(100) not null,\u000a   primary key(user_role)\u000a)
+INSERT INTO CUSTOMERS VALUES(1,1,'1',0,'Farshad','Fallah','farfallah@ymail.com')
+COMMIT
+INSERT INTO CUST_ROLES VALUES(1,'admin')
+COMMIT
+INSERT INTO ROLES VALUES('admin')
+COMMIT
+INSERT INTO ROLES VALUES('member')
+COMMIT
+INSERT INTO ROLES VALUES('owner')
+COMMIT
+INSERT INTO ROLES VALUES('officer')
+COMMIT
+DISCONNECT
+/*C32*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C33*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C34*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C35*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C36*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C37*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C41*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C39*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C40*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C43*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C42*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C44*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C38*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C45*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C46*/SET SCHEMA PUBLIC
+DISCONNECT
