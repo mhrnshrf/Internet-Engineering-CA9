@@ -96,7 +96,6 @@ public class Customer{
 	public int get_ID(){return _id;}
 	public void set_ID(int i){ _id = i;}
 	public void deposit(int amount){
-		cash = cash + amount;
 		try{
 			System.err.println("in deposit bef updateCustCash cash: " + cash + " amount: " + amount);
 			Database.getDB().updateCustCash(this, cash + amount);
@@ -106,6 +105,11 @@ public class Customer{
 			System.err.println("unable to update cash");
 		}
 	}
+
+public void setCash(int c){
+	cash = c;
+}
+
 	public boolean withdraw(int amount){
 
 		if ( cash < amount)

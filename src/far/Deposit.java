@@ -10,7 +10,7 @@ public class Deposit{
 	public String execute(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException, java.sql.SQLException {
     int id, amount;
     try{
-      id = Integer.parseInt(request.getParameter("id"));
+      id = Integer.parseInt(request.getRemoteUser());
         amount = Integer.parseInt(request.getParameter("amount"));
     }
     catch(NumberFormatException b){

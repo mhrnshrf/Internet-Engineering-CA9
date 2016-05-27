@@ -2,6 +2,16 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+  if (session != null && session.getAttribute("user") == null) {
+    Database db = Database.getDB();
+    Customer user = db.findCustByID(Integer.parseInt(request.getRemoteUser()));
+    if (user != null) {
+      session.setAttribute("user", user);
+    }
+  }
+%>
+
 <!DOCTYPE html>
 <html ng-app="myStore">
 <head>
@@ -43,15 +53,15 @@
                             </div>
                             <div class="col-sm-6 col-md-8">
                                 <h4>
-                                    Bhaumik Patel</h4>
+                                    ${user.getName()}&nbsp${user.getFamily()}</h4>
                                 <small><cite title="Tehran, Iran"><i class="glyphicon glyphicon-map-marker">
                                 </i>&nbspتهران، ایران </cite></small>
                                 <p>
-                                    <i class="glyphicon glyphicon-user"></i>&nbsp
+                                    <i class="glyphicon glyphicon-user"></i>&nbsp${user.getID()}
                                     <br />
-                                    <i class="glyphicon glyphicon-envelope"></i>&nbsp email@example.com
+                                    <i class="glyphicon glyphicon-envelope"></i>&nbsp${user.getEmail()}
                                     <br />
-                                    <i class="glyphicon glyphicon-usd"></i>&nbsp
+                                    <i class="glyphicon glyphicon-usd"></i>&nbsp${user.getCash()}
                                     <br />
                                 </p>
                             </div>
@@ -71,7 +81,7 @@
                   <form name="depositForm" action="Deposit.action">
 
                     <fieldset class="form-group">
-                      <input  type="number" min="0" class="form-control" placeholder="مبلغ به ریال"/>
+                      <input  type="number" min="0" class="form-control" name="amount" placeholder="مبلغ به ریال"/>
                     </fieldset>
                     <fieldset class="form-group">
                       <input class="btn btn-default btn-sm" type="submit" value="واریز" />

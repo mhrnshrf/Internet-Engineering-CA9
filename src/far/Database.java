@@ -27,7 +27,7 @@ public class Database{
 		Connection con = DriverManager.getConnection(CONN_STR);
 		Statement st = con.createStatement();
 		System.err.println("cash: " + cash);
-		st.executeUpdate("update customers set cash = " + cash + " where id = " + c.get_ID());
+		st.executeUpdate("update customers set cash = " + cash + " where id = " + c.getID());
 		con.close();
 	}
 	public void insertCust(Customer c) throws SQLException {
@@ -42,7 +42,7 @@ public class Database{
 			+", '" + c.getFamily()+"' "
 			+", '" + c.getEmail()+"' "
 			+ ")");
-			st.executeUpdate("insert into cust_roles values(" + c.get_ID() + ", 'member')");
+			st.executeUpdate("insert into cust_roles values(" + c.getID() + ", 'member')");
 		con.close();
 	}
 
@@ -98,7 +98,7 @@ public class Database{
 		Customer c;
 		if (rs.next()){
 			c = new Customer(rs.getInt("code"), rs.getInt("id"), rs.getString("name"), rs.getString("family"), rs.getString("pass"), rs.getString("email"));
-			c.deposit(rs.getInt("cash"));
+			c.setCash(rs.getInt("cash"));
 			con.close();
 			return c;
 		}

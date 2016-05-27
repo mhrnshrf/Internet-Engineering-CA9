@@ -2,16 +2,6 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-  if (session != null && session.getAttribute("user") == null) {
-    Database db = Database.getDB();
-    Customer user = db.findCustByID(Integer.parseInt(request.getRemoteUser()));
-    if (user != null) {
-      session.setAttribute("user", user);
-    }
-  }
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,10 +25,13 @@
 </head>
 	<body>
 		<div class="container">
-			<%@include file="header.jsp" %>
+      <div class="row">
+      <h2><em>سامانه هسته معاملات بورس</em></h2>
+      </br></br>
+      </div>
 		  <div class="row">
 		    <div class="col-sm-4">
-				      <%@include file="menu.jsp" %>
+				      <%-- <%@include file="menu.jsp" %> --%>
 		    </div>
 		    <div class="col-sm-4">
 			    <div class="content">

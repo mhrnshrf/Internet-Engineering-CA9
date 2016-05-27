@@ -2,6 +2,16 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+  if (session != null && session.getAttribute("user") == null) {
+    Database db = Database.getDB();
+    Customer user = db.findCustByID(Integer.parseInt(request.getRemoteUser()));
+    if (user != null) {
+      session.setAttribute("user", user);
+    }
+  }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +46,8 @@
 						String res = (String) request.getAttribute("res");
 					%>
 					<h2><%=res%></h2>
+        </br></br>
+        <a href="index.jsp" class="btn btn-default btn-sm">بازگشت به صفحه اصلی <span class="glyphicon glyphicon-repeat"></a>
 			    </div>
 		    </div>
         <div class="col-sm-4">

@@ -32,7 +32,7 @@
            <nav id="spy">
                <ul class="sidebar-nav nav">
                    <li>
-                       <a href="profile.jsp">
+                       <a href="Info.action">
                            <span class="fa fa-anchor solo">حساب کاربری</span>
                        </a>
                    </li>
@@ -47,7 +47,7 @@
                        </a>
                    </li>
                    <li>
-                       <a href="buypage.jsp">
+                       <a href="requests.jsp">
                            <span class="fa fa-anchor solo">درخواست‌های مالی</span>
                        </a>
                    </li>
@@ -57,7 +57,7 @@
                      </a>
                    </li>
                    <li>
-                     <a href="buypage.jsp">
+                     <a href="config.jsp">
                        <span class="fa fa-anchor solo">تنظیمات سامانه</span>
                      </a>
                    </li>

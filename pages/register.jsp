@@ -12,7 +12,7 @@ try{
     id = Integer.parseInt(request.getParameter("id"));
     name = request.getParameter("name");
     family = request.getParameter("family");
-    pass = request.getParameter("pass");
+    pass = request.getParameter("pwd");
     email = request.getParameter("email");
 }
 catch(NumberFormatException b){
@@ -33,4 +33,4 @@ else
 request.setAttribute("res", res);
 %>
 
-<jsp:forward page = "response.jsp"/>
+<jsp:forward page = "signedup.jsp"/>

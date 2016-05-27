@@ -41,10 +41,10 @@
 				<i>نسخه آزمایشی</i>
 			</div>
 			<div id="welcome">
-				<em>کاربر </em>
-			
 				<em>خوش آمدید </em>
 				<em><a href="logout.jsp">خروج</a></em>
+				<em>${user.getName()}</em>&nbsp;
+				<em>${user.getFamily()}</em>&nbsp;
 			</div>
 		</div>
   </div>

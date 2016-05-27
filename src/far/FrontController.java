@@ -20,12 +20,12 @@ public class FrontController extends HttpServlet {
 			if (session != null && session.getAttribute("user") == null) {
 				Database db = Database.getDB();
 				Customer user = db.findCustByID(Integer.parseInt(request.getRemoteUser()));
-				System.out.println("didi goftam: "+request.getRemoteUser());
-				System.out.println("userfamily FrontController: "+user.getFamily());
-				System.out.println("username FrontController: "+user.getName());
-				System.out.println("usercode FrontController: "+user.get_ID());
-				System.out.println("userid FrontController: "+user.getID());
-				System.out.println("useremail FrontController: "+user.getEmail());
+				// System.out.println("didi goftam: "+request.getRemoteUser());
+				// System.out.println("userfamily FrontController: "+user.getFamily());
+				// System.out.println("username FrontController: "+user.getName());
+				// System.out.println("usercode FrontController: "+user.get_ID());
+				// System.out.println("userid FrontController: "+user.getID());
+				// System.out.println("useremail FrontController: "+user.getEmail());
 				if (user != null) {
 					session.setAttribute("user", user);
 				}

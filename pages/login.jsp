@@ -58,7 +58,7 @@
               <div  ng-controller="ModalDemoCtrl" >
                 <script type="text/ng-template" id="myModalContent.html">
                   <div name="mymodal">
-                    <form name="reqForm" role="form" action="Register.action">
+                    <form name="reqForm" role="form" action="register.jsp">
                       <div class="modal-header">
                         <h3 class="modal-title">عضویت</h3>
                       </div>

@@ -48,6 +48,7 @@
                 <div class="col-xs-12 col-sm-6 col-md-6">
                     <div class="well well-sm">
                         <div class="row">
+                          <%--  from here! --%>
                             <div class="col-sm-6 col-md-4">
                                 <img src="pro.png" />
                             </div>
@@ -65,6 +66,7 @@
                                     <br />
                                 </p>
                             </div>
+                        <%--  --%>
                         </div>
                     </div>
                 </div>
@@ -74,17 +76,17 @@
           <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="well well-sm">
             <div class="box">
-                <a ng-click="depositEn=true" ng-hide="depositEn"><strong>افزایش اعتبار »</strong></a>
+                <a ng-click="depositEn=true" ng-hide="depositEn"><strong>مشاهده پروفایل کاربران »</strong></a>
                 <div ng-show="depositEn">
                   <a ng-click="depositEn=false"><b>. . .</b></a></br></br>
                   <!--  Deposit Form -->
-                  <form name="depositForm" action="Deposit.action">
+                  <form name="depositForm" action="Others.action">
 
                     <fieldset class="form-group">
-                      <input  type="number" min="0" class="form-control" name="amount" placeholder="مبلغ به ریال"/>
+                      <input  type="number" min="0" class="form-control" name="client" placeholder="شناسه کاربری"/>
                     </fieldset>
                     <fieldset class="form-group">
-                      <input class="btn btn-default btn-sm" type="submit" value="واریز" />
+                      <input class="btn btn-default btn-sm" type="submit" value="مشاهده" />
                     </fieldset>
                   </form>
                 </div>

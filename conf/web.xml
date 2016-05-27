@@ -27,6 +27,7 @@
 		<web-resource-collection>
 			<web-resource-name>EntryActions</web-resource-name>
 			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/profile.jsp</url-pattern>
 			<!-- <url-pattern>/PollView.action</url-pattern> -->
 		</web-resource-collection>
 		<auth-constraint>
