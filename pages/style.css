@@ -76,10 +76,24 @@ a:hover {
   text-decoration: none;
 }
 
+
 .well a{
   text-shadow: 4px 4px 8px #000;
 
 }
+
+/*.well a:visited{
+  text-shadow: 4px 4px 8px #000;
+  color: #A1A1A1;
+  text-decoration: none;
+
+}
+.well a:active{
+  text-shadow: 4px 4px 8px #000;
+  color: #A1A1A1;
+  text-decoration: none;
+
+}*/
 
 #welcome{
   direction: ltr;

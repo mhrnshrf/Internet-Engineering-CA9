@@ -42,36 +42,34 @@
 				      <%@include file="menu.jsp" %>
 		    </div>
 		    <div class="col-sm-8">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+              <div class="box">
+                  <a ng-click="roleEn=true" ng-hide="roleEn"><strong>نقش دادن به دیگران »</strong></a>
+                  <div ng-show="roleEn">
+                    <a ng-click="roleEn=false"><b>. . .</b></a></br></br>
+                    <!--  Deposit Form -->
+                    <form name="depositForm" action="ChangeRole.action">
 
-        <div class="row">
-          <div class="profile">
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="well well-sm">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <img src="pro.png" />
-                            </div>
-                            <div class="col-sm-6 col-md-8">
-                                <h4>
-                                    ${user.getName()}&nbsp${user.getFamily()}</h4>
-                                <small><cite title="Tehran, Iran"><i class="glyphicon glyphicon-map-marker">
-                                </i>&nbspتهران، ایران </cite></small>
-                                <p>
-                                    <i class="glyphicon glyphicon-user"></i>&nbsp${user.getID()}
-                                    <br />
-                                    <i class="glyphicon glyphicon-envelope"></i>&nbsp${user.getEmail()}
-                                    <br />
-                                    <i class="glyphicon glyphicon-usd"></i>&nbsp${user.getCash()}
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                      <fieldset class="form-group">
+                        <input  type="number" min="0" class="form-control" name="client" placeholder="شناسه کاربری"/>
+                      </fieldset>
+                      <fieldset class="form-group">
+                        <input  type="text" min="0" class="form-control" name="role" placeholder="نقش"/>
+                      </fieldset>
+                      <fieldset class="form-group">
+                        <input class="btn btn-default btn-sm" type="submit" value="اعمال" />
+                      </fieldset>
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-6">
+          </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="well well-sm">
             <div class="box">
                 <a ng-click="depositEn=true" ng-hide="depositEn"><strong>مشاهده پروفایل کاربران »</strong></a>
@@ -92,6 +90,16 @@
             </div>
           </div>
         </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="well well-sm">
+            <div class="box">
+                <a href="Report.action"><strong>دریافت گزارش »</strong></a>
+              </div>
+            </div>
+          </div>
+
+      </div>
 
 		    </div>
         <%-- <div class="col-sm-4">

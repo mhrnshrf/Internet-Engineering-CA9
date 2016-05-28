@@ -25,10 +25,51 @@
 
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>EntryActions</web-resource-name>
+			<web-resource-name>All</web-resource-name>
 			<url-pattern>/index.jsp</url-pattern>
 			<url-pattern>/profile.jsp</url-pattern>
-			<!-- <url-pattern>/PollView.action</url-pattern> -->
+			<url-pattern>/queue.jsp</url-pattern>
+			<url-pattern>/status.jsp</url-pattern>
+			<url-pattern>/Info.action</url-pattern>
+			<url-pattern>/Status.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+			<role-name>officer</role-name>
+			<role-name>owner</role-name>
+			<role-name>member</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>OfficerAdmin</web-resource-name>
+      <url-pattern>/requests.jsp</url-pattern>
+			<url-pattern>/ConfirmDepo.action</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+			<role-name>officer</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>OwnerAdmin</web-resource-name>
+      <url-pattern>/add-sym.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+			<role-name>owner</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>MemberAdmin</web-resource-name>
+      <url-pattern>/order.jsp</url-pattern>
+      <url-pattern>/Deposit.action</url-pattern>
+      <url-pattern>/Order.action</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
@@ -38,9 +79,12 @@
 
 	<security-constraint>
 		<web-resource-collection>
-			<web-resource-name>CreateAction</web-resource-name>
-			<url-pattern>/NewPoll.action</url-pattern>
-			<url-pattern>/poll-form.jsp</url-pattern>
+			<web-resource-name>Admin</web-resource-name>
+      <url-pattern>/config.jsp</url-pattern>
+      <url-pattern>/others.jsp</url-pattern>
+      <url-pattern>/changeRole.action</url-pattern>
+      <url-pattern>/Others.action</url-pattern>
+      <url-pattern>/Report.action</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
@@ -61,6 +105,12 @@
 
 	<security-role>
 		<role-name>admin</role-name>
+	</security-role>
+	<security-role>
+		<role-name>officer</role-name>
+	</security-role>
+	<security-role>
+		<role-name>owner</role-name>
 	</security-role>
 	<security-role>
 		<role-name>member</role-name>

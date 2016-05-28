@@ -1,6 +1,7 @@
 <%@page import="far.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%
   if (session != null && session.getAttribute("user") == null) {
     Database db = Database.getDB();
@@ -41,7 +42,10 @@
 		    </div>
 		    <div class="col-sm-4">
 			    <div class="content">
-					<h2><i class="glyphicon glyphicon-home"></i>&nbspصفحه اصلی</h2>
+
+					<h2>افزودن نماد</h2>
+        </br></br>
+        <a href="index.jsp" class="btn btn-default btn-sm">بازگشت به صفحه اصلی <span class="glyphicon glyphicon-repeat"></a>
 			    </div>
 		    </div>
         <div class="col-sm-4">

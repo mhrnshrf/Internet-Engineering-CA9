@@ -23,6 +23,16 @@ public class Database{
 		 }
 	}
 
+	public boolean hasRole(String r, Customer c) throws SQLException{
+		Connection con = DriverManager.getConnection(CONN_STR);
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery("select * from cust_roles where id = " + c.getID() + " and user_role = '" + r + "'");
+		con.close();
+		if(rs.next())
+			return true;
+		return false;
+	}
+
 	public void updateCustCash(Customer c, int cash) throws SQLException {
 		Connection con = DriverManager.getConnection(CONN_STR);
 		Statement st = con.createStatement();
@@ -50,11 +60,12 @@ public class Database{
 	public void changeRole(Customer c, String r) throws Exception{
 		Connection con = DriverManager.getConnection(CONN_STR);
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select * from roles where user_role = " + r);
+		ResultSet rs = st.executeQuery("select * from roles where user_role = '" + r + "'");
 		if(!rs.next())
 			throw new IOException("invalid role");
 		else
-			st.executeUpdate("insert into user_roles values(" + c.get_ID() + ", '" + r + "')");
+
+			st.executeUpdate("insert into cust_roles values(" + c.getID() + ", '" + r + "')");
 		con.close();
 	}
 
@@ -63,7 +74,7 @@ public class Database{
 		Connection con = DriverManager.getConnection(CONN_STR);
 		Customer c = findCustByID(id);
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select * from customers natural join user_roles where id = " + id );
+		ResultSet rs = st.executeQuery("select * from customers natural join cust_roles where id = " + id );
 		//build corresponding profiles
 		ArrayList<Profile> p = new ArrayList<Profile>();
 		while(rs.next()){

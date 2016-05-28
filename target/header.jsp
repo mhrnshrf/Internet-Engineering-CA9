@@ -38,7 +38,7 @@
 		<div class="row">
 	 		<div id="top" class="jumbotron">
 			   	<h2>سامانه هسته معاملات بورس</h2></br>
-				<i>نسخه آزمایشی</i>
+				<i>نسخهٔ نهایی</i>
 			</div>
 			<div id="welcome">
 				<em>خوش آمدید </em>

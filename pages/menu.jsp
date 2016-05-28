@@ -33,31 +33,37 @@
                <ul class="sidebar-nav nav">
                    <li>
                        <a href="Info.action">
+                         <i class="glyphicon glyphicon-user"></i>&nbsp;
                            <span class="fa fa-anchor solo">حساب کاربری</span>
                        </a>
                    </li>
                    <li>
                        <a href="order.jsp">
+                         <i class="glyphicon glyphicon-transfer"></i>&nbsp;
                            <span class="fa fa-anchor solo">خرید و فروش</span>
                        </a>
                    </li>
                    <li>
-                       <a href="buypage.jsp">
+                       <a href="status.jsp">
+                         <i class="glyphicon glyphicon-stats"></i>&nbsp;
                            <span class="fa fa-anchor solo">وضعیت بازار</span>
                        </a>
                    </li>
                    <li>
                        <a href="requests.jsp">
-                           <span class="fa fa-anchor solo">درخواست‌های مالی</span>
+                         <i class="glyphicon glyphicon-bitcoin"></i>&nbsp;
+                           <span class="fa fa-anchor solo">تاییدهای مالی</span>
                        </a>
                    </li>
                    <li>
-                     <a href="buypage.jsp">
+                     <a href="add-sym.jsp">
+                       <i class="glyphicon glyphicon-plus"></i>&nbsp;
                        <span class="fa fa-anchor solo">افزودن نماد</span>
                      </a>
                    </li>
                    <li>
                      <a href="config.jsp">
+                       <i class="glyphicon glyphicon-cog"></i>&nbsp;
                        <span class="fa fa-anchor solo">تنظیمات سامانه</span>
                      </a>
                    </li>

@@ -42,44 +42,19 @@
 				      <%@include file="menu.jsp" %>
 		    </div>
 		    <div class="col-sm-8">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="well well-sm">
-              <div class="box">
-                  <a ng-click="roleEn=true" ng-hide="roleEn"><strong>نقش دادن به دیگران »</strong></a>
-                  <div ng-show="roleEn">
-                    <a ng-click="roleEn=false"><b>. . .</b></a></br></br>
-                    <!--  Deposit Form -->
-                    <form name="depositForm" action="ChangeRole.action">
 
-                      <fieldset class="form-group">
-                        <input  type="number" min="0" class="form-control" name="client" placeholder="شناسه کاربری"/>
-                      </fieldset>
-                      <fieldset class="form-group">
-                        <input  type="text" min="0" class="form-control" name="role" placeholder="نقش"/>
-                      </fieldset>
-                      <fieldset class="form-group">
-                        <input class="btn btn-default btn-sm" type="submit" value="اعمال" />
-                      </fieldset>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
           <div class="well well-sm">
             <div class="box">
-                <a ng-click="depositEn=true" ng-hide="depositEn"><strong>مشاهده پروفایل کاربران »</strong></a>
+                <a ng-click="depositEn=true" ng-hide="depositEn"><strong>مشاهده وضعیت نماد »</strong></a>
                 <div ng-show="depositEn">
                   <a ng-click="depositEn=false"><b>. . .</b></a></br></br>
                   <!--  Deposit Form -->
-                  <form name="depositForm" action="Others.action">
+                  <form name="depositForm" action="Status.action">
 
                     <fieldset class="form-group">
-                      <input  type="number" min="0" class="form-control" name="client" placeholder="شناسه کاربری"/>
+                      <input class="form-control" name="instrument" placeholder="نام نماد"/>
                     </fieldset>
                     <fieldset class="form-group">
                       <input class="btn btn-default btn-sm" type="submit" value="مشاهده" />
@@ -90,16 +65,6 @@
             </div>
           </div>
         </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
-          <div class="well well-sm">
-            <div class="box">
-                <a href="Report.action"><strong>دریافت گزارش »</strong></a>
-              </div>
-            </div>
-          </div>
-
-      </div>
 
 		    </div>
         <%-- <div class="col-sm-4">

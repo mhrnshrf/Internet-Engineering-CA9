@@ -45,7 +45,7 @@
 					<%
 						String res = (String) request.getAttribute("res");
 					%>
-					<h2><%=res%></h2>
+					<h3><%=res%></h3>
         </br></br>
         <a href="index.jsp" class="btn btn-default btn-sm">بازگشت به صفحه اصلی <span class="glyphicon glyphicon-repeat"></a>
 			    </div>

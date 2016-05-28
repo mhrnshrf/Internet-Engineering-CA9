@@ -41,8 +41,7 @@
 		    </div>
 		    <div class="col-sm-4">
 			    <div class="content">
-
-					<h2>صفحه اصلی</h2>
+					<h2><i class="glyphicon glyphicon-home"></i>&nbspصفحه اصلی</h2>
 			    </div>
 		    </div>
         <div class="col-sm-4">
